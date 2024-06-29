@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "Attack",
+  "name": "enemy_action_table",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

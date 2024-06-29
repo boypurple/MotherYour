@@ -168,8 +168,8 @@ _mp_loss = 0;
 _enemy_action = "";
 _test = {};
 
-_enemies = [{_name: "enemy", sprite: spr_enemy, hp: 10, _attack: 2, _speed: 2, actions: ["attack", "nothing"], animation: 1.0, turn: true},
-			{_name: "enemy", sprite: spr_enemy, hp: 10, _attack: 2, _speed: 2, actions: ["attack", "nothing"], animation: 1.0, turn: true}];
+_enemies = [{_name: "enemy", sprite: spr_enemy, hp: 10, _attack: 4, _speed: 2, actions: ["attack", "nothing"], animation: 1.0, turn: true},
+			{_name: "enemy", sprite: spr_enemy, hp: 10, _attack: 4, _speed: 2, actions: ["attack", "nothing"], animation: 1.0, turn: true}];
 _enemies_sorted = [{_name: "enemy", sprite: spr_enemy, hp: 10, _attack: 2, _speed: 2, actions: ["attack", "nothing"], animation: 1.0, turn: true},
 					{_name: "enemy", sprite: spr_enemy, hp: 10, _attack: 2, _speed: 2, actions: ["attack", "nothing"], animation: 1.0, turn: true}];
 array_sort(_enemies_sorted, _sorting);
@@ -190,3 +190,5 @@ _death_animation = 1.0;
 _button = 0;
 _sprite = 0;
 _color = c_white;
+
+_hp_length = 0;

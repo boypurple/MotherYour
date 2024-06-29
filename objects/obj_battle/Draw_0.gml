@@ -33,6 +33,9 @@ if (_intro_timer >= 2) {
 		draw_sprite_ext(spr_fade_in, int64(_intro_animation), 0, 0, 2, 2, 0, c_white, 1);
 	}
 	else {
+		if (_hp_2 == 0.0) {
+			_hp_2 = 10.0
+		}
 		switch (string_length(_hp_str)) {
 			case 1:
 				_digits_c = real(string_char_at(_hp_str, 1));
@@ -60,7 +63,7 @@ if (_intro_timer >= 2) {
 					else {
 						_copy_b_2 = _copy_b_1;
 						_timer_1 = 0;
-						_hp_str = 0;
+						_hp_2 = 0;
 					}
 				}
 				draw_sprite_ext(_digit_sprites[0], 0, 635, 645, 5, 5, 0, c_white, 1);
@@ -112,9 +115,9 @@ if (_intro_timer >= 2) {
 						_hp_3 = 0;
 					}
 				}
-				draw_sprite_ext(_digit_sprites[_copy_a_2], frac(abs(_hp_3))*8, 635, 645, 5, 5, 0, c_white, 1);
-				draw_sprite_ext(_digit_sprites[_copy_b_2], frac(abs(_hp_2))*8, 675, 645, 5, 5, 0, c_white, 1);
-				draw_sprite_ext(_digit_sprites[_digits_c], frac(abs(_hp_1))*8, 715, 645, 5, 5, 0, c_white, 1);
+				draw_sprite_ext(_digit_sprites[_copy_a_2], frac(real(abs(_hp_3)))*8, 635, 645, 5, 5, 0, c_white, 1);
+				draw_sprite_ext(_digit_sprites[_copy_b_2], frac(real(abs(_hp_2)))*8, 675, 645, 5, 5, 0, c_white, 1);
+				draw_sprite_ext(_digit_sprites[_digits_c], frac(real(abs(_hp_1)))*8, 715, 645, 5, 5, 0, c_white, 1);
 				break;
 		}
 		switch (_state) {

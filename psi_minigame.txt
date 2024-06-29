@@ -1,0 +1,4 @@
+Pk fire goes up and down, you press a button to make it go left, then press a button to stop it on the target
+Pk ice goes in a arc and you stop it on the target.
+Pk lightning goes up and down above the target in a zig-zap.
+The closer you are to the bullseye the more damage the move does
