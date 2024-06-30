@@ -8,8 +8,13 @@ if (keyboard_check_pressed(ord("Z"))) {
 		_text_current = _text_full;
 	}
 	else {
-		with (self) {
-			instance_destroy();
+		if (_next_event != noone) {
+			_next_event[0](_next_event[1]);
+		}
+		else {
+			with (self) {
+				instance_destroy();
+			}
 		}
 	}
 }
