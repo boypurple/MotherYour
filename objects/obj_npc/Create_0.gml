@@ -1,2 +1,2 @@
-_events = [];
+_event = false;
 

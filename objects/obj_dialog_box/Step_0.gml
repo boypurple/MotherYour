@@ -8,7 +8,7 @@ if (keyboard_check_pressed(ord("Z"))) {
 		_text_current = _text_full;
 	}
 	else {
-		if (_next_event != noone) {
+		if (_next_event) {
 			_next_event[0](_next_event[1]);
 		}
 		else {

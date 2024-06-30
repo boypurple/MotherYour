@@ -1,3 +1,2 @@
-_events = [
-	[open_dialog, "aaaaaaaaaaaaaaaaaaaaaaaaaa"]
-];
+_event = [party_join, "aaaaaaaaaaaaaaaaaaaaaaaaaa"];
+

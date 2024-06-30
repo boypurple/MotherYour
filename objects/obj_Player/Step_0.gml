@@ -45,15 +45,12 @@ if (keyboard_check_pressed(ord("Z"))) {
 		case "overworld":
 			if (place_meeting(x+3, y+3, obj_npc) || place_meeting(x-3, y-3, obj_npc)) {
 				_current_npc = instance_nearest(x, y, obj_npc);
+				_function = _current_npc._event;
+				_function[0](_function[1]);
 			}
 			else {
 				open_dialog("No problem here.");
 			}
-			_status = "dialog";
-			get_event();
-			break;
-		case "dialog":
-			get_event();
 			break;
 	}
 }
