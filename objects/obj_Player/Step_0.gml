@@ -3,6 +3,14 @@ _right = x + 32;
 _top = y;
 _bottom = y + 48;
 
+if (instance_exists(obj_dialog_box)) {
+	_status = "dialog";
+}
+
+else {
+	_status = "overworld";
+}
+
 if (keyboard_check(vk_left) && _status == "overworld") {
 	x -= 3;
 }

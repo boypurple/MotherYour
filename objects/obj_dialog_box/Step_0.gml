@@ -1,5 +1,8 @@
 if (_text_current != _text_full) {
 	_text_current += string_char_at(_text_full, _text_index);
+	if (!audio_is_playing(snd_dialog)) {
+		audio_play_sound(snd_dialog, 2, false);
+	}
 	_text_index++;
 }
 
