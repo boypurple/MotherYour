@@ -114,6 +114,7 @@
     {"id":{"name":"Sprite21","path":"sprites/Sprite21/Sprite21.yy",},},
     {"id":{"name":"spr_player_dr_run","path":"sprites/spr_player_dr_run/spr_player_dr_run.yy",},},
     {"id":{"name":"obj_flag_table","path":"objects/obj_flag_table/obj_flag_table.yy",},},
+    {"id":{"name":"obj_cutscene","path":"objects/obj_cutscene/obj_cutscene.yy",},},
     {"id":{"name":"spr_7","path":"sprites/spr_7/spr_7.yy",},},
     {"id":{"name":"spr_button_unselected","path":"sprites/spr_button_unselected/spr_button_unselected.yy",},},
     {"id":{"name":"snd_party_join","path":"sounds/snd_party_join/snd_party_join.yy",},},

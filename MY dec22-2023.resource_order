@@ -84,6 +84,7 @@
     {"name":"Sprite21","order":5,"path":"sprites/Sprite21/Sprite21.yy",},
     {"name":"spr_player_dr_run","order":2,"path":"sprites/spr_player_dr_run/spr_player_dr_run.yy",},
     {"name":"obj_flag_table","order":10,"path":"objects/obj_flag_table/obj_flag_table.yy",},
+    {"name":"obj_cutscene","order":12,"path":"objects/obj_cutscene/obj_cutscene.yy",},
     {"name":"spr_7","order":7,"path":"sprites/spr_7/spr_7.yy",},
     {"name":"spr_button_unselected","order":15,"path":"sprites/spr_button_unselected/spr_button_unselected.yy",},
     {"name":"snd_party_join","order":9,"path":"sounds/snd_party_join/snd_party_join.yy",},
