@@ -1,4 +1,3 @@
-_function = false;
 _animation = 0;
 _sprite = spr_player_d_run;
 _left = 0;
@@ -14,4 +13,9 @@ _attack = 5;
 _temp = 0;
 
 _function_index = 0;
+
 _current_npc = noone;
+_npc_function = 0;
+
+_current_event = 0;
+_event_function = 0;

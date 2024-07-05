@@ -1,3 +1,4 @@
+obj_player._status = "dialog";
 _text_full = "";
 _text_current = "";
 _text_index = 1;

@@ -1,2 +1,1 @@
-_event = false;
-
+_event = 0;
