@@ -41,7 +41,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2023.11.1.129",
+    "IDEVersion":"2024.6.0.157",
   },
   "name":"MY dec22-2023",
   "resources":[
@@ -125,6 +125,7 @@
     {"id":{"name":"Sprite44","path":"sprites/Sprite44/Sprite44.yy",},},
     {"id":{"name":"Sprite45","path":"sprites/Sprite45/Sprite45.yy",},},
     {"id":{"name":"Sprite46","path":"sprites/Sprite46/Sprite46.yy",},},
+    {"id":{"name":"Sprite47","path":"sprites/Sprite47/Sprite47.yy",},},
     {"id":{"name":"test2904","path":"sprites/test2904/test2904.yy",},},
     {"id":{"name":"spr_EMERALD_TN","path":"tilesets/spr_EMERALD_TN/spr_EMERALD_TN.yy",},},
     {"id":{"name":"TileSet2","path":"tilesets/TileSet2/TileSet2.yy",},},
