@@ -14,3 +14,6 @@ for (var _i = 0; _i <= string_length(_lowercase); _i++;) {
 	}
 }
 
+draw_sprite(Sprite48, 0,camera_get_view_x(view_camera[0])+(_cursor_x*20), camera_get_view_y(view_camera[0])+(_cursor_y*20));
+
+
