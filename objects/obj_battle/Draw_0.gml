@@ -44,8 +44,11 @@ if (_intro_timer >= 2) {
 				draw_sprite_ext(_digit_sprites[_digits_c], frac(abs(_hp_1))*8, camera_get_view_x(view_camera[0])+715, camera_get_view_y(view_camera[0])+645, 5, 5, 0, c_white, 1);
 				break;
 			case 2:
+				// Converts a number to a string and returns the number of digits in the number.
 				_digits_b = real(string_char_at(_hp_str, 1));
 				_digits_c = real(string_char_at(_hp_str, 2));
+				
+				// Detects changes in numbers by comparing the current number with the previous number.
 				_copy_b_1 = _digits_b;
 				if (_copy_b_2 != _copy_b_1) {
 					if (_timer_1 < 7) {
