@@ -1,5 +1,5 @@
 {
-  "$GMSound":"",
+  "$GMSound":"v1",
   "%Name":"snd_battle_start",
   "audioGroupId":{
     "name":"audiogroup_default",
@@ -10,6 +10,7 @@
   "compression":0,
   "conversionMode":0,
   "duration":4.04898,
+  "exportDir":"",
   "name":"snd_battle_start",
   "parent":{
     "name":"Sounds",

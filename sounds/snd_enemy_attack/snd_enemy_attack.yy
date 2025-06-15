@@ -1,5 +1,5 @@
 {
-  "$GMSound":"",
+  "$GMSound":"v1",
   "%Name":"snd_enemy_attack",
   "audioGroupId":{
     "name":"audiogroup_default",
@@ -10,6 +10,7 @@
   "compression":0,
   "conversionMode":0,
   "duration":0.326168,
+  "exportDir":"",
   "name":"snd_enemy_attack",
   "parent":{
     "name":"Sounds",

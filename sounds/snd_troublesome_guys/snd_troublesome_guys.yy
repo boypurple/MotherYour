@@ -1,5 +1,5 @@
 {
-  "$GMSound":"",
+  "$GMSound":"v1",
   "%Name":"snd_troublesome_guys",
   "audioGroupId":{
     "name":"audiogroup_default",
@@ -10,6 +10,7 @@
   "compression":0,
   "conversionMode":0,
   "duration":52.81959,
+  "exportDir":"",
   "name":"snd_troublesome_guys",
   "parent":{
     "name":"Sounds",
