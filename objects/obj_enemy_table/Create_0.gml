@@ -1,6 +1,6 @@
 _goomba = {
 	_name: "enemy",
-	_sprite: spr_enemy,
+	_sprite: sEnemy,
 	_hp: 10,
 	_attack: 2,
 	_speed: 2,

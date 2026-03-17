@@ -74,7 +74,7 @@ _win = false;
 _hp_1 = 110.0;
 _hp_2 = 0.0;
 _hp_3 = 0.0;
-_hp_str = real(_hp_1);
+_hp_str = _hp_1;
 
 _hp_decrease_rate = 60;
 _hp_timer = 0;
@@ -110,7 +110,7 @@ _digit_sprites[9] = spr_9;
 _action = "";
 
 
-draw_set_font(fnt_mother3_font);
+draw_set_font(fnMother3);
 image_speed = 0.25
 
 _layer = layer_get_id("Background");
@@ -168,10 +168,10 @@ _mp_loss = 0;
 _enemy_action = "";
 _test = {};
 
-_enemies = [{_name: "enemy", sprite: spr_enemy, hp: 10, _attack: 4, _speed: 2, actions: ["attack", "nothing"], animation: 1.0, turn: true},
-			{_name: "enemy", sprite: spr_enemy, hp: 10, _attack: 4, _speed: 2, actions: ["attack", "nothing"], animation: 1.0, turn: true}];
-_enemies_sorted = [{_name: "enemy", sprite: spr_enemy, hp: 10, _attack: 2, _speed: 2, actions: ["attack", "nothing"], animation: 1.0, turn: true},
-					{_name: "enemy", sprite: spr_enemy, hp: 10, _attack: 2, _speed: 2, actions: ["attack", "nothing"], animation: 1.0, turn: true}];
+_enemies = [{_name: "enemy", sprite: sEnemy, hp: 10, _attack: 4, _speed: 2, actions: ["attack", "nothing"], animation: 1.0, turn: true},
+			{_name: "enemy", sprite: sEnemy, hp: 10, _attack: 4, _speed: 2, actions: ["attack", "nothing"], animation: 1.0, turn: true}];
+_enemies_sorted = [{_name: "enemy", sprite: sEnemy, hp: 10, _attack: 2, _speed: 2, actions: ["attack", "nothing"], animation: 1.0, turn: true},
+					{_name: "enemy", sprite: sEnemy, hp: 10, _attack: 2, _speed: 2, actions: ["attack", "nothing"], animation: 1.0, turn: true}];
 array_sort(_enemies_sorted, _sorting);
 _text_full = "an enemy appeared!";
 _text = "";

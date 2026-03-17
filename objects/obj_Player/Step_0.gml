@@ -25,12 +25,12 @@ else {
 	_animation = 0;
 }
 
-// Enemy interaction.
-if ((place_meeting(x+3, y+3, obj_slime) || place_meeting(x-3, y-3, obj_slime)) && _status == "overworld") {
-	_status = "battle";
-	_animation = 0;
-	instance_create_depth(obj_camera._view_x, obj_camera._view_y, 0, obj_battle);
-}
+//// Enemy interaction.
+//if ((place_meeting(x+3, y+3, obj_slime) || place_meeting(x-3, y-3, obj_slime)) && _status == "overworld") {
+//	_status = "battle";
+//	_animation = 0;
+//	instance_create_depth(obj_camera._view_x, obj_camera._view_y, 0, obj_battle);
+//}
 
 // When you press Z button
 if (keyboard_check_pressed(ord("Z"))) {

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"MenuFunctions",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"MenuFunctions",
+  "parent":{
+    "name":"Danilo",
+    "path":"folders/Scripts/Danilo.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

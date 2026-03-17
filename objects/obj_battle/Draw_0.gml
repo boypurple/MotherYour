@@ -10,7 +10,7 @@ switch (_intro_timer) {
 
 if (_intro_timer >= 2) {
 	
-	draw_sprite_ext(spr_battle_1, image_index, camera_get_view_x(view_camera[0]), camera_get_view_y(view_camera[0]), 2, 2, 0, c_white, 1);
+	draw_sprite_ext(sBattle1, image_index, camera_get_view_x(view_camera[0]), camera_get_view_y(view_camera[0]), 2, 2, 0, c_white, 1);
 	
 	for (_sprite = 0; _sprite < array_length(_enemies); _sprite++) {
 		if (_enemies[_sprite].hp > 0) {
@@ -137,7 +137,7 @@ if (_intro_timer >= 2) {
 				break;
 			case "attack":
 				_color = make_colour_rgb(55, 55, 55);
-				draw_sprite_ext(spr_cursor, -1, camera_get_view_x(view_camera[0])+(1280/(_enemy_amount+1))*(_target+1), camera_get_view_y(view_camera[0])+360, 5, 5, 0, c_white, 1);
+				draw_sprite_ext(sCursor, -1, camera_get_view_x(view_camera[0])+(1280/(_enemy_amount+1))*(_target+1), camera_get_view_y(view_camera[0])+360, 5, 5, 0, c_white, 1);
 				break;
 			case "item":
 				_color = c_white;

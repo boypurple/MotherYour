@@ -1,0 +1,1 @@
+NewEncounter([global.enemies.boar, global.enemies.boar], sBattle1)

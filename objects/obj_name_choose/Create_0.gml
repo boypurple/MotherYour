@@ -1,5 +1,5 @@
 draw_set_colour(c_white);
-draw_set_font(fnt_mother3_font);
+draw_set_font(fnMother3);
 
 _full_name = "";
 _index = 0;

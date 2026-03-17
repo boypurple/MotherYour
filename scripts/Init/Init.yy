@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Init",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Init",
+  "parent":{
+    "name":"Danilo",
+    "path":"folders/Scripts/Danilo.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

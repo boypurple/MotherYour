@@ -1,5 +1,5 @@
 {
-  "$GMWindowsOptions":"",
+  "$GMWindowsOptions":"v1",
   "%Name":"Windows",
   "name":"Windows",
   "option_windows_allow_fullscreen_switching":false,
@@ -7,6 +7,7 @@
   "option_windows_company_info":"YoYo Games Ltd",
   "option_windows_copyright_info":"",
   "option_windows_copy_exe_to_dest":false,
+  "option_windows_d3dswapeffectdiscard":false,
   "option_windows_description_info":"A GameMaker Game",
   "option_windows_disable_sandbox":false,
   "option_windows_display_cursor":true,
@@ -25,7 +26,7 @@
   "option_windows_scale":0,
   "option_windows_sleep_margin":10,
   "option_windows_splash_screen":"${base_options_dir}/windows/splash/splash.png",
-  "option_windows_start_fullscreen":false,
+  "option_windows_start_fullscreen":true,
   "option_windows_steam_use_alternative_launcher":false,
   "option_windows_texture_page":"2048x2048",
   "option_windows_use_splash":false,
