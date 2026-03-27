@@ -57,7 +57,6 @@ for(var i = 0; i < array_length(partyUnits); i++)
 	draw_set_colour(c_white)
 	var _char = partyUnits[i]
 	if(_char.id == _unitWithCurrentTurn) draw_set_colour(c_yellow)
-	if(_char == _unitWithCurrentTurn) draw_set_colour(c_yellow)
 	if(_char.hp <= 0) draw_set_colour(c_red)
 	draw_text(x + COLLUMN_NAME, y + 320 + (i * 20), _char.name)
 	

@@ -32,14 +32,14 @@ cursor =
 //Make enemies
 for(var i = 0; i < array_length(enemies); i++)
 {
-	enemyUnits[i] = instance_create_depth(x + 250 + (i * 128), y + 180, depth - 10, oBattleUnitEnemy, enemies[i])
+	enemyUnits[i] = instance_create_depth(x + 250 + ((i mod 3) * 128), y + 180 - ((i mod 3) * 10) - ((i div 3) * 25), depth - 10, oBattleUnitEnemy, enemies[i])
 	array_push(units, enemyUnits[i])
 }
 
 //Make friends
 for(var i = 0; i < array_length(global.party); i++)
 {
-	partyUnits[i] = instance_create_depth(x - 250 + (i * -128), y - 180, depth - 10, oBattleUnitPC, global.party[i])
+	partyUnits[i] = instance_create_depth(x + COLLUMN_NAME, y + 320 + i * 20, depth - 10, oBattleUnitPC, global.party[i])
 	array_push(units, partyUnits[i])
 }
 
@@ -50,7 +50,7 @@ unitTurnOrder = array_shuffle(units)
 RefreshRenderOrder = function()
 {
 	unitRenderOrder = []
-	array_copy(unitRenderOrder, 0, enemyUnits, 0, array_length(enemyUnits))
+	array_copy(unitRenderOrder, 0, units, 0, array_length(units))
 	array_sort(unitRenderOrder, function(_1, _2)
 	{
 		return _1.y - _2.y
@@ -121,8 +121,16 @@ function BattleStateSelectAction()
 		else
 		{
 			//If unit is AI controlled:
-			var _enemyAction = _unit.AIscript()
-			if(_enemyAction != -1) BeginAction(_unit.id, _enemyAction[0], _enemyAction[1])
+			if(_unit.stunned == false)
+			{
+				var _enemyAction = _unit.AIscript()
+				if(_enemyAction != -1) BeginAction(_unit.id, _enemyAction[0], _enemyAction[1])
+			}
+			else
+			{
+				_unit.stunned = false
+				battleState = BattleStateVictoryCheck
+			}
 		}
 	}
 }
@@ -158,10 +166,11 @@ function BattleStatePerformAction()
 		{
 			with(currentUser)
 			{
-				sprite_index = sprites.idle
+				//sprite_index = sprites.idle
 				image_index = 0
 				acting = false
 			}
+			
 			if(variable_struct_exists(currentAction, "effectSprite"))
 			{
 				if(currentAction.effectOnTarget == MODE.ALWAYS) || ((currentAction.effectOnTarget == MODE.VARIES) && (array_length(currentTargets) <= 1))
@@ -181,20 +190,76 @@ function BattleStatePerformAction()
 			currentAction.func(currentUser, currentTargets)
 		}
 	}
-	//Wait for delay and then end the turn
-	if(!instance_exists(oBattleEffect))
+	else
 	{
-		battleWaitTimeRemaining--
-		if(battleWaitTimeRemaining == 0)
+		//Wait for delay and then end the turn
+		if(!instance_exists(oBattleEffect))
 		{
-			battleState = BattleStateVictoryCheck
+			battleWaitTimeRemaining--
+			if(battleWaitTimeRemaining == 0)
+			{
+				battleState = BattleStateVictoryCheck
+			}
 		}
 	}
 }
 
 function BattleStateVictoryCheck()
 {
-	battleState = BattleStateTurnProgression
+	// 1. Checa se todos os aliados estão mortos
+	var _partyDead = true;
+	for(var i = 0; i < array_length(partyUnits); i++)
+	{
+		// Se a instância existir e o HP for maior que 0, a party não está toda morta
+		if (instance_exists(partyUnits[i]) && partyUnits[i].hp > 0)
+		{
+			_partyDead = false;
+			break; // Para o loop cedo para economizar processamento
+		}
+	}
+
+	// 2. Checa se todos os inimigos estão mortos
+	var _enemiesDead = true;
+	for(var i = 0; i < array_length(enemyUnits); i++)
+	{
+		if (instance_exists(enemyUnits[i]) && enemyUnits[i].hp > 0)
+		{
+			_enemiesDead = false;
+			break;
+		}
+	}
+
+	// 3. Verifica o resultado
+	if (_partyDead)
+	{
+		// Dica: Aqui você também pode limpar os arrays, destruir o obj_battle,
+		// tocar uma música de vitória/Game Over ou reativar o jogador no mapa.
+		instance_destroy()
+	}
+	else if (_enemiesDead)
+	{
+	    var _totalXP = 0;
+	    // Soma o XP de todos os inimigos da batalha
+	    for(var i = 0; i < array_length(enemyUnits); i++)
+		{
+	        _totalXP += enemyUnits[i].xpValue;
+	    }
+
+	    // Distribui para cada membro da party que estiver vivo
+	    for(var i = 0; i < array_length(partyUnits); i++)
+		{
+	        if (partyUnits[i].hp > 0) {
+	            partyUnits[i].xp += _totalXP;
+	            CheckLevelUp(partyUnits[i]); // Chama a função que criamos acima
+	        }
+	    }
+	    instance_destroy()
+	}
+	else
+	{
+		// A batalha continua, passa para o próximo turno
+		battleState = BattleStateTurnProgression;
+	}
 }
 
 function BattleStateTurnProgression()

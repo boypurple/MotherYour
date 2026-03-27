@@ -46,7 +46,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.14.3.217",
+    "IDEVersion":"2024.14.4.221",
   },
   "name":"MY dec22-2023",
   "resources":[
@@ -101,6 +101,7 @@
     {"id":{"name":"snd_you_damage","path":"sounds/snd_you_damage/snd_you_damage.yy",},},
     {"id":{"name":"snd_you_win","path":"sounds/snd_you_win/snd_you_win.yy",},},
     {"id":{"name":"sAttack","path":"sprites/sAttack/sAttack.yy",},},
+    {"id":{"name":"sAttack1","path":"sprites/sAttack1/sAttack1.yy",},},
     {"id":{"name":"sBattle1","path":"sprites/sBattle1/sBattle1.yy",},},
     {"id":{"name":"sBox","path":"sprites/sBox/sBox.yy",},},
     {"id":{"name":"sChrisU","path":"sprites/sChrisU/sChrisU.yy",},},

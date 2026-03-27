@@ -91,9 +91,9 @@ function MenuSelectAction(_user, _action)
 				{
 					targetSide = oBattle.partyUnits
 					activeTarget = activeUser
-					var _findSelf = function(_element)
+					var _findSelf = function(_element, _user)
 					{
-						return (_element == activeTarget)
+						return (_element == cursorTarget)
 					}
 					targetIndex = array_find_index(oBattle.partyUnits, _findSelf)
 				}

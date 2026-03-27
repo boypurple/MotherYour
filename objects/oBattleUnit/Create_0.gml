@@ -1,1 +1,1 @@
-sprite_index = sprites.idle
+//sprite_index = sprites.idle

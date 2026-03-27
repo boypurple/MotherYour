@@ -73,6 +73,7 @@
     {"name":"snd_you_attack","order":4,"path":"sounds/snd_you_attack/snd_you_attack.yy",},
     {"name":"snd_you_damage","order":7,"path":"sounds/snd_you_damage/snd_you_damage.yy",},
     {"name":"snd_you_win","order":8,"path":"sounds/snd_you_win/snd_you_win.yy",},
+    {"name":"sAttack1","order":1,"path":"sprites/sAttack1/sAttack1.yy",},
     {"name":"sBox","order":1,"path":"sprites/sBox/sBox.yy",},
     {"name":"sChrisU","order":12,"path":"sprites/sChrisU/sChrisU.yy",},
     {"name":"sCursor","order":16,"path":"sprites/sCursor/sCursor.yy",},
