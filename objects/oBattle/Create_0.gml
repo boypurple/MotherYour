@@ -76,52 +76,60 @@ function BattleStateSelectAction()
 		//If unit is player controlled
 		if(_unit.object_index == oBattleUnitPC)
 		{
-			//Compile the action Menu
-			var _menuOptions = []
-			var _subMenus = {}
-			
-			var _actionList = _unit.actions
-			
-			for(var i = 0; i < array_length(_actionList); i++)
+			if(!_unit.stunned) || (!_unit.sleep)
 			{
-				var _action = _actionList[i]
-				var _available = true //Later we'll check PP cost here...
-				var _nameAndCount = _action.name //Later we'll modify the name to include the item count, if the action is an item.
-				if(_action.subMenu == -1)
-				{
-					array_push(_menuOptions, [_nameAndCount, MenuSelectAction, [_unit, _action], _available])
-				}
-				else
-				{
-					//Create or add to a submenu
-					if(is_undefined(_subMenus[$ _action.subMenu]))
-					{
-						variable_struct_set(_subMenus, _action.subMenu, [[_nameAndCount, MenuSelectAction, [_unit, _action], _available]])
-					}
-					else 
-					{
-						array_push(_subMenus[$ _action.subMenu], [_nameAndCount, MenuSelectAction, [_unit, _action], _available])
-					}
-				}
-			}
+				//Compile the action Menu
+				var _menuOptions = []
+				var _subMenus = {}
 			
-			//Turn sub menus into an arrya
-			var _subMenusArray = variable_struct_get_names(_subMenus)
-			for(var i = 0; i < array_length(_subMenusArray); i++)
+				var _actionList = _unit.actions
+			
+				for(var i = 0; i < array_length(_actionList); i++)
+				{
+					var _action = _actionList[i]
+					var _available = true //Later we'll check PP cost here...
+					var _nameAndCount = _action.name //Later we'll modify the name to include the item count, if the action is an item.
+					if(_action.subMenu == -1)
+					{
+						array_push(_menuOptions, [_nameAndCount, MenuSelectAction, [_unit, _action], _available])
+					}
+					else
+					{
+						//Create or add to a submenu
+						if(is_undefined(_subMenus[$ _action.subMenu]))
+						{
+							variable_struct_set(_subMenus, _action.subMenu, [[_nameAndCount, MenuSelectAction, [_unit, _action], _available]])
+						}
+						else 
+						{
+							array_push(_subMenus[$ _action.subMenu], [_nameAndCount, MenuSelectAction, [_unit, _action], _available])
+						}
+					}
+				}
+			
+				//Turn sub menus into an arrya
+				var _subMenusArray = variable_struct_get_names(_subMenus)
+				for(var i = 0; i < array_length(_subMenusArray); i++)
+				{
+					//Sort submenu if needed
+					//Add back option at the end of each submenu
+					array_push(_subMenus[$ _subMenusArray[i]], ["Back", MenuGoBack, -1, true])
+					//Add submenu into the main menu
+					array_push(_menuOptions, [_subMenusArray[i], SubMenu, [_subMenus[$ _subMenusArray[i]]], true])
+				}
+			
+				Menu(x + 10, y + 110, _menuOptions, , 74, 60)
+			}
+			else
 			{
-				//Sort submenu if needed
-				//Add back option at the end of each submenu
-				array_push(_subMenus[$ _subMenusArray[i]], ["Back", MenuGoBack, -1, true])
-				//Add submenu into the main menu
-				array_push(_menuOptions, [_subMenusArray[i], SubMenu, [_subMenus[$ _subMenusArray[i]]], true])
+				_unit.stunned = false
+				battleState = BattleStateVictoryCheck
 			}
-			
-			Menu(x + 10, y + 110, _menuOptions, , 74, 60)
 		}
 		else
 		{
 			//If unit is AI controlled:
-			if(_unit.stunned == false)
+			if(!_unit.stunned) || (!_unit.sleep)
 			{
 				var _enemyAction = _unit.AIscript()
 				if(_enemyAction != -1) BeginAction(_unit.id, _enemyAction[0], _enemyAction[1])
@@ -232,6 +240,21 @@ function BattleStateVictoryCheck()
 	// 3. Verifica o resultado
 	if (_partyDead)
 	{
+		for(var i = 0; i < array_length(partyUnits); i++)
+		{
+			if(partyUnits[i].afo)
+			{
+				partyUnits[i].def -= 1
+				partyUnits[i].strength -= 1
+				partyUnits[i].afo = false
+			}
+			
+			if(partyUnits[i].hyper)
+			{
+				partyUnits[i].spd -= 1
+				partyUnits[i].hyper = false
+			}
+		}
 		// Dica: Aqui você também pode limpar os arrays, destruir o obj_battle,
 		// tocar uma música de vitória/Game Over ou reativar o jogador no mapa.
 		instance_destroy()
@@ -239,20 +262,42 @@ function BattleStateVictoryCheck()
 	else if (_enemiesDead)
 	{
 	    var _totalXP = 0;
+		var _totalCoin = 0
+		var _multCoin = 0
+		
 	    // Soma o XP de todos os inimigos da batalha
 	    for(var i = 0; i < array_length(enemyUnits); i++)
 		{
 	        _totalXP += enemyUnits[i].xpValue;
+			if(enemyUnits[i].jackpot == true) _multCoin = 0.08 
+	        _totalCoin += (enemyUnits[i].coin + (enemyUnits[i].coin * _multCoin));
 	    }
-
+		
 	    // Distribui para cada membro da party que estiver vivo
 	    for(var i = 0; i < array_length(partyUnits); i++)
 		{
-	        if (partyUnits[i].hp > 0) {
-	            partyUnits[i].xp += _totalXP;
-	            CheckLevelUp(partyUnits[i]); // Chama a função que criamos acima
+			if(partyUnits[i].afo)
+			{
+				partyUnits[i].def -= 1
+				partyUnits[i].strength -= 1
+				partyUnits[i].afo = false
+			}
+			
+			if(partyUnits[i].hyper)
+			{
+				partyUnits[i].spd -= 1
+				partyUnits[i].hyper = false
+			}
+			
+			if(partyUnits[i].hp > 0)
+			{
+				partyUnits[i].xp += _totalXP;
+				CheckLevelUp(partyUnits[i]); // Chama a função que criamos acima
 	        }
 	    }
+		
+		global.coins += _totalCoin
+		
 	    instance_destroy()
 	}
 	else
@@ -273,6 +318,65 @@ function BattleStateTurnProgression()
 		turn = 0
 		roundCount++
 	}
+	
+	for(var i = 0; i < array_length(unitTurnOrder) - 1; i++)
+	{
+		var _unit = unitTurnOrder[i]
+		if(_unit.itchy)
+		{
+			_unit.itnum += 1
+			if(_unit.itnum >= 5)
+			{
+				_unit.itchy = false
+				_unit.itnum = 0
+			}
+		}
+		
+		if(_unit.hyper)
+		{
+			_unit.hynum += 1
+			if(_unit.hynum >= 3)
+			{
+				_unit.hyper = false
+				_unit.hynum = 0
+			}
+		}
+		
+		if(_unit.poisoned)
+		{
+			_unit.ponum += 1
+			
+			switch(_unit.poison)
+			{
+				case "":
+					break
+				
+				case "a":
+					BattleChangeHP(_unit, irandom_range(-4, -8), 0)
+					break
+					
+				case "b":
+					BattleChangeHP(_unit, irandom_range(-20, -40), 0)
+					break
+					
+				case "y":
+					BattleChangeHP(_unit, irandom_range(-50, -80), 0)
+					break
+					
+				case "o":
+					BattleChangeHP(_unit, irandom_range(-80, -100), 0)
+					break
+			}
+			
+			if(_unit.ponum >= 5)
+			{
+				_unit.poisoned = false
+				_unit.ponum = 0
+				_unit.poison = ""
+			}
+		}
+	}
+	
 	battleState = BattleStateSelectAction
 }
 

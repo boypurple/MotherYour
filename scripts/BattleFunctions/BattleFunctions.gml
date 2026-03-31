@@ -17,6 +17,8 @@ function BattleChangeHP(_target, _amount, _AliveDeadOrEither = 0)
 	if(_AliveDeadOrEither == 0) && (_target.hp <= 0) _failed = true
 	if(_AliveDeadOrEither == 1) && (_target.hp > 0) _failed = true
 	
+	_target.sleep = false
+	
 	var _col = c_white
 	if(_amount > 0) _col = c_lime
 	if(_failed)

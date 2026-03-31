@@ -80,22 +80,49 @@ function MenuSelectAction(_user, _action)
 				if(targetAll == MODE.VARIES) targetAll = true //"Toggle" starts as all by Default
 				activeUser = _user
 				
+				var _chan = 1
+				var _mut = false
+				
+				if(_user.mutatedHand) if(_chan < irandom(2)) _mut = true
+				
 				//Wich side to target by default?
 				if(_action.targetEnemyByDefault) //Target enemy by default
 				{
-					targetIndex = 0
-					targetSide = oBattle.enemyUnits
-					activeTarget = oBattle.enemyUnits[targetIndex]
+					if(_mut == false)
+					{
+						targetIndex = 0
+						targetSide = oBattle.enemyUnits
+						activeTarget = oBattle.enemyUnits[targetIndex]
+					}
+					else
+					{
+						targetSide = oBattle.partyUnits
+						activeTarget = activeUser
+						var _findSelf = function(_element, _user)
+						{
+							return (_element == cursorTarget)
+						}
+						targetIndex = array_find_index(oBattle.partyUnits, _findSelf)
+					}
 				}
 				else //Target self by default
 				{
-					targetSide = oBattle.partyUnits
-					activeTarget = activeUser
-					var _findSelf = function(_element, _user)
+					if(_mut == false)
 					{
-						return (_element == cursorTarget)
+						targetSide = oBattle.partyUnits
+						activeTarget = activeUser
+						var _findSelf = function(_element, _user)
+						{
+							return (_element == cursorTarget)
+						}
+						targetIndex = array_find_index(oBattle.partyUnits, _findSelf)
 					}
-					targetIndex = array_find_index(oBattle.partyUnits, _findSelf)
+					else
+					{
+						targetIndex = 0
+						targetSide = oBattle.enemyUnits
+						activeTarget = oBattle.enemyUnits[targetIndex]
+					}
 				}
 			}
 		}
