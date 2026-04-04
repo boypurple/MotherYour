@@ -1,0 +1,101 @@
+/// @desc Pause Screen
+if(global.gamePaused)
+{
+	if(!global.config)
+	{
+		draw_set_colour(c_black)
+		draw_set_alpha(0.75)
+		draw_rectangle(0, 0, RESOLUTION_W, RESOLUTION_H, false)
+		draw_set_alpha(1)
+		draw_set_colour(c_white)
+		draw_set_font(fnMother3)
+		draw_set_valign(fa_top)
+		draw_set_halign(fa_center)
+	
+		draw_text(96, 32, "Game Paused")
+		for(var i = 0; i < array_length(pauseOption); i++)
+		{
+			var _print = ""
+			if(i == pauseOptionSelected)
+			{
+				draw_set_colour(c_yellow)
+				_print += pauseOptionName[i]
+				draw_sprite(sCursor, 0, 48, 96 + (i * 96))
+			}
+			else
+			{
+				draw_set_colour(c_white)
+				_print += pauseOptionName[i]
+				draw_set_alpha(0.7)
+			}
+			draw_text(96, 128 + (i * 96), pauseOptionName[i])
+			draw_sprite(pauseOption[i], 0, 96, 96 + (i * 96))
+		
+			draw_set_alpha(1)
+		}
+	
+		draw_set_halign(fa_right)
+		draw_text(1248, 688, "Current Balance: $" + string(global.coins))
+	}
+	else
+	{
+		draw_set_colour(c_black)
+		draw_set_alpha(0.75)
+		draw_rectangle(0, 0, RESOLUTION_W, RESOLUTION_H, false)
+		draw_set_alpha(1)
+		draw_set_colour(c_white)
+		draw_set_font(fnMother3)
+		draw_set_valign(fa_top)
+		draw_set_halign(fa_center)
+	
+		draw_text(96, 32, "Settings")
+		for(var i = 0; i < array_length(settingsOption); i++)
+		{
+			var _print = ""
+			if(i == settingsOptionSelected)
+			{
+				draw_set_colour(c_yellow)
+				_print += settingsOptionName[i]
+				draw_sprite(sCursor, 0, 48, 96 + (i * 96))
+			}
+			else
+			{
+				draw_set_colour(c_white)
+				_print += settingsOptionName[i]
+				draw_set_alpha(0.7)
+			}
+			draw_set_halign(fa_center)
+			draw_text(96, 128 + (i * 96), settingsOptionName[i])
+			draw_sprite(settingsOption[i], 0, 96, 96 + (i * 96))
+		
+			draw_set_alpha(1)
+			
+			draw_set_halign(fa_right)
+			draw_text(1248, 688, "Press [Esc] to go back")
+		}
+		
+		if(global.configAudio)
+		{
+			for(var i = 0; i < array_length(audioOptionName); i++)
+			{
+				var _print = ""
+				if(i == audioOptionSelected)
+				{
+					draw_set_colour(c_yellow)
+					_print += audioOptionName[i]
+					draw_sprite(sCursor, 0, 328, 96 + (i * 96))
+				}
+				else
+				{
+					draw_set_colour(c_white)
+					_print += audioOptionName[i]
+					draw_set_alpha(0.7)
+				}
+				draw_set_halign(fa_left)
+				draw_text(360, 96 + (i * 96), audioOptionName[i])
+		
+				draw_set_alpha(1)
+			}
+		}
+	}
+}

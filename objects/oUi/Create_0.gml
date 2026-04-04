@@ -1,0 +1,13 @@
+click = false
+
+pauseOption = [sContinue, sParty, sGoods, sSettings, sSave, sQuit]
+pauseOptionName = ["Continue", "Party", "Goods", "Settings", "Save", "Quit"]
+pauseOptionSelected = 0
+
+settingsOption = [sAudio, sVideo, sControl, sQuit]
+settingsOptionName = ["Audio", "Video", "Controls", "Quit"]
+settingsOptionSelected = 0
+settingsSide = 0
+
+audioOptionName = ["Volume: " + string(global.volume), "SE Volume: " + string(global.volumeSE)]
+audioOptionSelected = 0
