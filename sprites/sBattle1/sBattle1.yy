@@ -51,8 +51,8 @@
   },
   "origin":0,
   "parent":{
-    "name":"Backgrounds",
-    "path":"folders/Sprites/Backgrounds.yy",
+    "name":"BACKGROUNDS",
+    "path":"folders/Sprites/BACKGROUNDS.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
