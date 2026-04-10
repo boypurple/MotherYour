@@ -1,3 +1,19 @@
+//Data
+global.coins = 0
+global.volume = 100
+global.volumeSE = 100
+
+global.gamePaused = false
+global.config = false
+global.configAudio = false
+global.configVideo = false
+global.configControl = false
+
+#macro RESOLUTION_W 1280
+#macro RESOLUTION_H 720
+
+#macro TILE_SIZE 32
+
 //Action Library
 global.actionLibrary =
 {
@@ -108,7 +124,7 @@ global.actionLibrary =
 				_blind = 0
 			}
 			
-			if(_targets.noNut)
+			if(_user.noNut)
 			{
 				_nut = 0.25
 			}
@@ -133,7 +149,7 @@ global.actionLibrary =
 			}
 			else
 			{
-				var _damage = irandom_range(1, 2)
+				var _damage = irandom_range(100, 120)
 				BattleChangeHP(_targets[0], -_damage)
 				BattleChangePP(_user, -ppCost)
 				// 2. Stun Logic
@@ -280,8 +296,6 @@ enum MODE
 	ALWAYS = 1,
 	VARIES = 2
 }
-
-global.coins = 0
 
 //Party Data
 global.party =

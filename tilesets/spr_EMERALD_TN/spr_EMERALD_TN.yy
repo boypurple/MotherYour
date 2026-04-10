@@ -1,7 +1,13 @@
 {
   "$GMTileSet":"v1",
   "%Name":"spr_EMERALD_TN",
-  "autoTileSets":[],
+  "autoTileSets":[
+    {"$GMAutoTileSet":"","%Name":"autotile_1","closed_edge":true,"name":"autotile_1","resourceType":"GMAutoTileSet","resourceVersion":"2.0","tiles":[
+        69,189,187,37,125,44,75,34,127,41,13,97,45,64,46,76,72,95,66,63,36,96,35,3,70,16,39,47,105,103,106,107,
+        32,2,33,1,98,6,65,77,12,40,8,102,78,108,157,
+      ],},
+    {"$GMAutoTileSet":"","%Name":"autotile_2","closed_edge":false,"name":"autotile_2","resourceType":"GMAutoTileSet","resourceVersion":"2.0","tiles":[157,65,12,104,98,70,44,125,33,13,72,127,38,187,189,69,],},
+  ],
   "macroPageTiles":{
     "SerialiseHeight":28,
     "SerialiseWidth":79,
